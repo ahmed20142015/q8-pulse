@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "142251023813",
+    "firebase_url": "https://q8-pluse.firebaseio.com",
+    "project_id": "q8-pluse",
+    "storage_bucket": "q8-pluse.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:142251023813:android:9991d96d9485e7e04abfac",
+        "android_client_info": {
+          "package_name": "com.app.KwPulseFM888"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "142251023813-4o2h0meusctto41319m2e0n38a0rpm2k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.KwPulseFM888",
+            "certificate_hash": "e9e29babb25185a846bbbf2518cdb88cff62b86a"
+          }
+        },
+        {
+          "client_id": "142251023813-ur3s8sddhsel9ut1a98s0d69cepctmv1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGbCZGyGb7E3xJZameqGwpOL41j7hz5fs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "142251023813-ur3s8sddhsel9ut1a98s0d69cepctmv1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "142251023813-g6bh4qen3snqtrcfj498vv3dhhrttmt8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.p3635JD",
+                "app_store_id": "1168544429"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
