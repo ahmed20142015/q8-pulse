@@ -286,6 +286,10 @@ class BubblesView extends StateMVC<BubblesScreen>
             return Container(
               height: 200,
 
+
+
+
+              
               child:
                   Padding(
                     padding: const EdgeInsets.only(top: 12.0),
