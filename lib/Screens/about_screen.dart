@@ -8,8 +8,6 @@ import 'package:q8_pulse/Widgets/SharedWidget.dart';
 import 'package:q8_pulse/utils/app_Localization.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_html/flutter_html.dart';
-import 'package:html/dom.dart' as dom;
 
 class AboutScreen extends StatefulWidget {
   createState() => AboutView();

@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:audio_service/audio_service.dart';
+//import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
@@ -85,7 +85,7 @@ class MyApp extends StatelessWidget {
             theme: Provider.of<ThemeModel>(context).currentTheme,
             home: WillPopScope(
                onWillPop: () {
-           AudioService.disconnect();
+           //AudioService.disconnect();
           return Future.value(true);
         },
               child: SplashScreen()),

@@ -82,6 +82,9 @@ class _PlayerWidgetState extends State<PlayerWidget> {
 
   _PlayerWidgetState(this.url, this.urls);
 
+  bool isPlaying;
+  bool isPlayingLocale = false ;
+
   @override
   void initState() {
     super.initState();
@@ -126,6 +129,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
                       height: MediaQuery.of(context).size.height / 15,
                       decoration: BoxDecoration(
                           image: DecorationImage(
+                            ///MSG Icon
                               image: AssetImage(
                                   "assets/imgs/ic_msg_dark@3x.png"))),
                     ),
@@ -185,17 +189,6 @@ class _PlayerWidgetState extends State<PlayerWidget> {
                   },
                       )
 
-//                  _isPlaying
-//                      ? Icon(
-//                          Icons.pause,
-//                          color: Colors.white,
-//                          size: MediaQuery.of(context).size.width / 12,
-//                        )
-//                      : Icon(
-//                          Icons.play_arrow,
-//                          color: Colors.white,
-//                          size: MediaQuery.of(context).size.width / 12,
-//                        )
               ),
             ),
             InkWell(
@@ -223,22 +216,30 @@ class _PlayerWidgetState extends State<PlayerWidget> {
         ),
       ),
     );
-//              Column(
-//                children: <Widget>[
-//
-//                  StreamBuilder(
-//                    stream: HomeController().getwhatDisplayNowStream.stream,
-//                    builder: (context, snapshot) {
-//                      if (snapshot.hasData) {
-//                        print('show name Data');
-//                        return _realNameShow(snapshot.data['title_en']);
-//                      } else {
-//                        return _splash();
-//                      }
-//                    },
-//                  ),
-//                ],
-//              ),
+  }
+
+  Future<void> audioStart() async {
+    await FlutterRadio.audioStart();
+    print('Audio Start OK');
+  }
+  Future playingStatus() async {
+    bool isP = await FlutterRadio.isPlaying();
+    setState(() {
+      isPlaying = isP;
+      print("status is : $isPlaying");
+    });
+  }
+
+  String getUrlMatchingImage() {
+    if (url == imageUrl1) {
+      return imageUrl1;
+    } else if (url == imageUrl2) {
+      return imageUrl2;
+    } else if (url == imageUrl2) {
+      return imageUrl3;
+    } else {
+      return imageUrl1;
+    }
   }
 
   void _initAudioPlayer() {
@@ -280,7 +281,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
       _position = Duration(milliseconds: 0);
     });
   }
-
+///play method
   Future<void> _play() async {
     print("play");
     if (url != null) {
@@ -337,7 +338,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
       print("something went wrong in stop :(");
     }
   }
-
+/*
   Future<void> _release() async {
     final Result result = await _audioPlayer.release();
     if (result == Result.FAIL) {
@@ -347,7 +348,6 @@ class _PlayerWidgetState extends State<PlayerWidget> {
       print("something went wrong in release :(");
     }
   }
-
   Future<void> _next() async {
     final Result result = await _audioPlayer.next();
     if (result == Result.FAIL) {
@@ -357,7 +357,6 @@ class _PlayerWidgetState extends State<PlayerWidget> {
       print("something went wrong in next :(");
     }
   }
-
   Future<void> _previous() async {
     final Result result = await _audioPlayer.previous();
     if (result == Result.FAIL) {
@@ -365,18 +364,6 @@ class _PlayerWidgetState extends State<PlayerWidget> {
           "you tried to call audio conrolling methods on released audio player :(");
     } else if (result == Result.ERROR) {
       print("something went wrong in previous :(");
-    }
-  }
-
-  String getUrlMatchingImage() {
-    if (url == imageUrl1) {
-      return imageUrl1;
-    } else if (url == imageUrl2) {
-      return imageUrl2;
-    } else if (url == imageUrl2) {
-      return imageUrl3;
-    } else {
-      return imageUrl1;
     }
   }
 
@@ -409,19 +396,9 @@ class _PlayerWidgetState extends State<PlayerWidget> {
       style: TextStyle(fontSize: 15, color: Colors.grey[500]),
     ));
   }
-  bool isPlaying;
-  bool isPlayingLocale = false ;
-  Future<void> audioStart() async {
-    await FlutterRadio.audioStart();
-    print('Audio Start OK');
-  }
-  Future playingStatus() async {
-    bool isP = await FlutterRadio.isPlaying();
-    setState(() {
-      isPlaying = isP;
-      print("status is : $isPlaying");
-    });
-  }
+  */
+
+
 
 
 }

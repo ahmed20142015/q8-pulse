@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,12 +12,12 @@ import 'package:q8_pulse/Widgets/ChatCliper.dart';
 import 'dart:io' as io;
 import 'dart:async';
 import 'package:flutter_audio_recorder/flutter_audio_recorder.dart';
-import 'package:audioplayers/audioplayers.dart';
-import 'package:path_provider/path_provider.dart';
+//import 'package:audioplayers/audioplayers.dart';
+//import 'package:path_provider/path_provider.dart';
 import 'package:q8_pulse/Widgets/ChatCliper2.dart';
 import 'package:q8_pulse/Widgets/SharedWidget.dart';
 import 'package:q8_pulse/Widgets/player_widget.dart';
-import 'package:audioplayers/audioplayers.dart';
+//import 'package:audioplayers/audioplayers.dart';
 import 'package:q8_pulse/utils/app_Localization.dart';
 
 const String defaultUserName = "John Doe";
@@ -75,11 +74,11 @@ class ChatView extends StateMVC<ChatScreen> with TickerProviderStateMixin {
   Future _init() async {
     String customPath = '/flutter_audio_recorder_';
     io.Directory appDocDirectory;
-    if (io.Platform.isIOS) {
-      appDocDirectory = await getApplicationDocumentsDirectory();
-    } else {
-      appDocDirectory = await getExternalStorageDirectory();
-    }
+//    if (io.Platform.isIOS) {
+//      appDocDirectory = await getApplicationDocumentsDirectory();
+//    } else {
+//      appDocDirectory = await getExternalStorageDirectory();
+//    }
 
     // can add extension like ".mp4" ".wav" ".m4a" ".aac"
     customPath = appDocDirectory.path +
@@ -238,8 +237,8 @@ class ChatView extends StateMVC<ChatScreen> with TickerProviderStateMixin {
   }
 
   void _play() {
-    AudioPlayer player = AudioPlayer();
-    player.play(_recording.path, isLocal: true);
+   // AudioPlayer player = AudioPlayer();
+   // player.play(_recording.path, isLocal: true);
   }
 
   Widget call() {
@@ -565,8 +564,8 @@ class Message extends StatelessWidget {
   final int adminId;
 
   void _play() {
-    AudioPlayer player = AudioPlayer();
-    player.play(recording.path, isLocal: true);
+    //AudioPlayer player = AudioPlayer();
+    //player.play(recording.path, isLocal: true);
   }
 
   const Message(
