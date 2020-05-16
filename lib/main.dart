@@ -33,8 +33,28 @@ Future<void> main() async{
   firebaseMessaging.getToken().then((token){
     print('>>>>>>>>>>>>>>>>Token  '+token);
   });
+//
+//  var initializationSettingsAndroid = AndroidInitializationSettings('@mipmap/ic_launcher');
+//
+//  var initializationSettingsIOS = IOSInitializationSettings(
+//      onDidReceiveLocalNotification:
+//          (int id, String title, String body, String payload) async {
+//        didReceiveLocalNotificationSubject.add(ReceivedNotification(
+//            id: id, title: title, body: body, payload: payload));
+//      });
+//  var initializationSettings = InitializationSettings(
+//      initializationSettingsAndroid, initializationSettingsIOS);
+//
+//  await flutterLocalNotificationsPlugin.initialize(initializationSettings,
+//      onSelectNotification: (String payload) async {
+//        if (payload != null) {
+//          debugPrint('notification payload: ' + payload);
+//        }
+//        selectNotificationSubject.add(payload);
+//      });
+//
 
-    firebaseMessaging.requestNotificationPermissions();
+
 
 //
 //  var initializationSettingsAndroid = AndroidInitializationSettings('@mipmap/ic_launcher');
