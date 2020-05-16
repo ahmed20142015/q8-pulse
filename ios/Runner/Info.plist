@@ -21,9 +21,10 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb115866726406821</string>
 				<string>com.googleusercontent.apps.142251023813-g6bh4qen3snqtrcfj498vv3dhhrttmt8</string>
 			</array>
 		</dict>
@@ -34,6 +35,8 @@
 	<string>115866726406821</string>
 	<key>FacebookDisplayName</key>
 	<string>FM888</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<string>NO</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -67,6 +70,9 @@
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
+		<string>fetch</string>
+		<string>processing</string>
+		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -90,6 +96,6 @@
 	<key>com.apple.security.network.client</key>
 	<true/>
 	<key>io.flutter.embedded_views_preview</key>
-    <true/>
+	<true/>
 </dict>
 </plist>

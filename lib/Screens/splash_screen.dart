@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:q8_pulse/ConstantVarables.dart';
 import 'package:q8_pulse/Controllers/UserLocalStorage.dart';
 import 'package:q8_pulse/Screens/bubbles.dart';
@@ -10,9 +11,6 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:q8_pulse/Services/Notifications.dart';
 
-
-
-
 class SplashScreen extends StatefulWidget {
 
   @override
@@ -21,12 +19,114 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
 
+
   final Firestore _db = Firestore();
   final FirebaseMessaging _fcm = FirebaseMessaging();
+
   StreamSubscription iosSubscription;
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+
   @override
   void initState() {
     super.initState();
+
+
+
+    if (Platform.isIOS) {
+      iosSubscription = _fcm.onIosSettingsRegistered.listen((data) {
+        print(data);
+
+
+        NotificationsServices().saveDeviceToken();
+      });
+
+      _fcm.requestNotificationPermissions(IosNotificationSettings());
+    } else {
+      NotificationsServices().saveDeviceToken();
+    }
+
+
+    _firebaseMessaging.configure(
+      onMessage: (Map<String, dynamic> message) async {
+
+        setState(() {
+          print("Push Messaging message: $message");
+        }
+        );
+        print("onMessage: $message");
+      },
+      onLaunch: (Map<String, dynamic> message) async {
+
+        setState(() {
+          print("Push Messaging message: $message");
+        });
+        print("onLaunch: $message");
+      },
+      onResume: (Map<String, dynamic> message) async {
+        setState(() {
+          print( "Push Messaging message: $message");
+        });
+        print("onResume: $message");
+      },
+    );
+
+    _firebaseMessaging.requestNotificationPermissions(
+        const IosNotificationSettings(sound: true, badge: true, alert: true));
+
+    _firebaseMessaging.onIosSettingsRegistered.listen((IosNotificationSettings settings) {
+      print("Settings registered: $settings");
+
+    });
+
+    _firebaseMessaging.getToken().then((String token) {
+      assert(token != null);
+      setState(() {print( "Push Messaging token: $token");});
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////
+
+//    _fcm.requestNotificationPermissions(
+//        const IosNotificationSettings(sound: true,badge: true,alert: true));
+//
+//    _fcm.onIosSettingsRegistered.listen(
+//            (IosNotificationSettings settings){
+//          print("received notification in ios");
+//        });
+//
+//    _fcm.getToken().then((token){
+//      print("The Token $token");
+//    });
+//
+//
+//    _fcm.configure(
+//      onMessage: (Map<String, dynamic> message) async {
+//        print("onMessage kkk: $message");
+//        //_showItemDialog(message);
+//      },
+//     // onBackgroundMessage: myBackgroundMessageHandler,
+//      onLaunch: (Map<String, dynamic> message) async {
+//        print("onLaunch: kkk $message");
+//        //_navigateToItemDetail(message);
+//      },
+//      onResume: (Map<String, dynamic> message) async {
+//        print("onResume: kkk $message");
+//        //_navigateToItemDetail(message);
+//      },
+//    );
+//
+
+
 //    if (Platform.isIOS) {
 //      iosSubscription = _fcm.onIosSettingsRegistered.listen((data) {
 //        print(data);
@@ -40,44 +140,45 @@ class _SplashScreenState extends State<SplashScreen> {
 //      NotificationsServices().saveDeviceToken();
 //    }
 
-       _fcm.configure(
-      onMessage: (Map<String, dynamic> message) async {
-        print("onMessage: $message");
-        // final snackbar = SnackBar(
-        //   content: Text(message['notification']['title']),
-        //   action: SnackBarAction(
-        //     label: 'Go',
-        //     onPressed: () => null,
-        //   ),
-        // );
-
-        // Scaffold.of(context).showSnackBar(snackbar);
-        showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-                content: ListTile(
-                  title: Text(message['notification']['title']),
-                  subtitle: Text(message['notification']['body']),
-                ),
-                actions: <Widget>[
-                  FlatButton(
-                    color: Colors.amber,
-                    child: Text('Ok'),
-                    onPressed: () => Navigator.of(context).pop(),
-                  ),
-                ],
-              ),
-        );
-      },
-      onLaunch: (Map<String, dynamic> message) async {
-        print("onLaunch: $message");
-        // TODO optional
-      },
-      onResume: (Map<String, dynamic> message) async {
-        print("onResume: $message");
-        // TODO optional
-      },
-    );
+//       _fcm.configure(
+//      onMessage: (Map<String, dynamic> message) async {
+//        print("kariiim onMessage: $message");
+//
+//        // final snackbar = SnackBar(
+//        //   content: Text(message['notification']['title']),
+//        //   action: SnackBarAction(
+//        //     label: 'Go',
+//        //     onPressed: () => null,
+//        //   ),
+//        // );
+//
+//        // Scaffold.of(context).showSnackBar(snackbar);
+//        showDialog(
+//          context: context,
+//          builder: (context) => AlertDialog(
+//                content: ListTile(
+//                  title: Text(message['notification']['title']),
+//                  subtitle: Text(message['notification']['body']),
+//                ),
+//                actions: <Widget>[
+//                  FlatButton(
+//                    color: Colors.amber,
+//                    child: Text('Ok'),
+//                    onPressed: () => Navigator.of(context).pop(),
+//                  ),
+//                ],
+//              ),
+//        );
+//      },
+//      onLaunch: (Map<String, dynamic> message) async {
+//        print("kariiim onLaunch: $message");
+//        // TODO optional
+//      },
+//      onResume: (Map<String, dynamic> message) async {
+//        print("kariiim onResume: $message");
+//        // TODO optional
+//      },
+//    );
 
 
     Timer(Duration(seconds: 3), () {
@@ -155,6 +256,10 @@ if(faceInfo[2]!=null){
    
     });
   }
+
+  Future onSelectNotification(String payload) async => (){};
+//await Navigator.push(context, MaterialPageRoute(builder: (context) => SecondPage(payload: payload)),);
+
 
   static loading(BuildContext context) {
     return Padding(

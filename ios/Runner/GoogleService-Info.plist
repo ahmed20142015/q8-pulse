@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>142251023813-6ml2iis2nkvtc3a416f6nke94jtt49ci.apps.googleusercontent.com</string>
+	<string>142251023813-g6bh4qen3snqtrcfj498vv3dhhrttmt8.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.142251023813-6ml2iis2nkvtc3a416f6nke94jtt49ci</string>
+	<string>com.googleusercontent.apps.142251023813-g6bh4qen3snqtrcfj498vv3dhhrttmt8</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>142251023813-j426dtd4il0r19p0ab2rq1bkst4h8rmj.apps.googleusercontent.com</string>
+	<string>142251023813-4o2h0meusctto41319m2e0n38a0rpm2k.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBdEs-8dt6iYgHdMMPWngb3nJKy1TIak3w</string>
 	<key>GCM_SENDER_ID</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.q8Pulse</string>
+	<string>com.app.p3635JD</string>
 	<key>PROJECT_ID</key>
 	<string>q8-pluse</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,7 +31,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:142251023813:ios:65d625dcefdcf9f04abfac</string>
+	<string>1:142251023813:ios:180c64c338b0956c4abfac</string>
 	<key>DATABASE_URL</key>
 	<string>https://q8-pluse.firebaseio.com</string>
 </dict>

@@ -27,24 +27,17 @@ class SharedWidget {
    static   Widget arrowBack() {
       return ScopedModelDescendant<AppModel>(
         builder: (context,child,model){
-          return InkWell(
-          child: Container(
-            width: 25,
-            height: 25,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage( 
-                      model.appLocale == Locale('en')
-                  ? "assets/imgs/Chevron.png"
-                  : "assets/imgs/chevron2.png"
-                  ))),
-          ),
-          onTap: () {
-            Navigator.pop(context);
-          },
-        );
+          return Padding(
+            padding: const EdgeInsets.only(right:10,top: 5 ),
+            child: IconButton(icon: Icon(Icons.arrow_back_ios),
+                onPressed: (){
+                  Navigator.pop(context);
+
+                },color: Colors.white,),
+          );
+
         },
-             
+
       );
     }
 

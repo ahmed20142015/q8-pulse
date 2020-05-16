@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_radio/flutter_radio.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:provider/provider.dart';
 import 'package:q8_pulse/ConstantVarables.dart';
@@ -168,6 +169,7 @@ class BubblesView extends StateMVC<BubblesScreen>
 
   bool valueMode = true;
   bool valueLang = true;
+  //for switcher color yellow or red
   bool valueVorO = true;
 
   Widget switcherWidget() {
@@ -222,7 +224,8 @@ class BubblesView extends StateMVC<BubblesScreen>
                 child: Center(
                   child: Text(
                     DemoLocalizations.of(context).title['_audio'],
-                    style: TextStyle(fontSize: MediaQuery.of(context).size.width/23 , color: Colors.grey[200]),
+                    style: TextStyle(fontSize: MediaQuery.of(context).size.width/23 ,
+                        color: Colors.grey[200]),
                   ),
                 ),
               ),
@@ -248,7 +251,8 @@ class BubblesView extends StateMVC<BubblesScreen>
                 child: Center(
                   child: Text(
                     DemoLocalizations.of(context).title['_video'],
-                    style: TextStyle(fontSize: MediaQuery.of(context).size.width/23 , color: Colors.grey[200]),
+                    style: TextStyle(fontSize: MediaQuery.of(context).size.width/23 ,
+                        color: Colors.grey[200]),
                   ),
                 ),
               ),
@@ -281,15 +285,12 @@ class BubblesView extends StateMVC<BubblesScreen>
         if (snapshot.hasData) {
           print('video data');
           ///true
-          ///snapshot.data['status']== "ACTIVE" snapshot.data['status']== "ACTIVE"
-          if (true) {
+          ///snapshot.data['status']== "ACTIVE"
+          ///
+          if (snapshot.data['status']== "ACTIVE") {
             return Container(
               height: 200,
 
-
-
-
-              
               child:
                   Padding(
                     padding: const EdgeInsets.only(top: 12.0),
@@ -298,8 +299,8 @@ class BubblesView extends StateMVC<BubblesScreen>
                       child:
                       ///put the webview content here
                       WebView(
-                        initialUrl: "http://static.france24.com/live/F24_EN_LO_HLS/live_web.m3u8",
-                        //initialUrl: ConstantVarable.videoUrl,
+                        //initialUrl: "http://static.france24.com/live/F24_EN_LO_HLS/live_web.m3u8",
+                        initialUrl: ConstantVarable.videoUrl,
                         javascriptMode: JavascriptMode.unrestricted,
                       )
 
@@ -349,6 +350,9 @@ class BubblesView extends StateMVC<BubblesScreen>
   @override
   void initState() {
     super.initState();
+    FlutterRadio x ;
+    FlutterRadio.stop();
+    FlutterRadio.pause(url: null);
 
 // ShowsController().showLogic();
     print("google Ingormation " + widget.googleInfo.toString());
@@ -415,11 +419,9 @@ class BubblesView extends StateMVC<BubblesScreen>
                   }
                 },
               ),
-              valueVorO == true
-                  ? Container(
-                      height: MediaQuery.of(context).size.height / 2,
-                      child: pageView(),
-                    )
+              valueVorO == true ? Container(
+                  height: MediaQuery.of(context).size.height / 2,
+                  child: pageView())
                   : videoWidget(),
               valueVorO == true
                   ? Row(

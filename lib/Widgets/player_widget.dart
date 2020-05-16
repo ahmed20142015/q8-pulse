@@ -83,7 +83,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
   _PlayerWidgetState(this.url, this.urls);
 
   bool isPlaying;
-  bool isPlayingLocale = false ;
+  bool isPlayingLocale = false;
 
   @override
   void initState() {
@@ -150,12 +150,9 @@ class _PlayerWidgetState extends State<PlayerWidget> {
               },
             ),
             IconButton(
-              onPressed: _isPlaying
-                  ? () => _pause()
-                  : () {
-                      _playerState == PlayerState.RELEASED
-                          ? _play()
-                          : _resume();
+              onPressed: _isPlaying ? () => _pause() : ()
+              {
+                _playerState == PlayerState.RELEASED ? _play() : _resume();
                     },
               iconSize: 80.0,
               icon: CircleAvatar(

@@ -21,6 +21,7 @@ class ShowModel {
     String status;
     DateTime createdAt;
     DateTime updatedAt;
+    String fromTime;
     dynamic deletedAt;
     String description2En;
     String description2Ar;
@@ -37,6 +38,7 @@ class ShowModel {
         this.twitter,
         this.instagram,
         this.status,
+        this.fromTime,
         this.createdAt,
         this.updatedAt,
         this.deletedAt,
@@ -44,6 +46,7 @@ class ShowModel {
         this.description2Ar,
         this.pivot,
     });
+    //from_time
 
     factory ShowModel.fromJson(Map<String, dynamic> json) => ShowModel(
         id: json["id"] == null ? null : json["id"],
@@ -56,6 +59,7 @@ class ShowModel {
         twitter: json["twitter"],
         instagram: json["instagram"],
         status: json["status"] == null ? null : json["status"],
+        fromTime: json["from_time"] == null ? null : json["from_time"],
         createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
         updatedAt: json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
         deletedAt: json["deleted_at"],
@@ -68,6 +72,7 @@ class ShowModel {
         "id": id == null ? null : id,
         "title_en": titleEn == null ? null : titleEn,
         "title_ar": titleAr == null ? null : titleAr,
+        "from_time": fromTime == null ? null :fromTime,
         "description_en": descriptionEn == null ? null : descriptionEn,
         "description_ar": descriptionAr == null ? null : descriptionAr,
         "image": image == null ? null : image,
