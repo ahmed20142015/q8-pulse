@@ -66,7 +66,7 @@ class ProfileView extends StateMVC<ProfileScreen> {
 
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(left: 8, right: 8),
+        padding: const EdgeInsets.only(left: 8, right: 8,top: 10),
         child: SingleChildScrollView(
                   child: Column(
             
@@ -93,10 +93,11 @@ class ProfileView extends StateMVC<ProfileScreen> {
                       ),
                       imageProfile(),
                       Container(
+
                         decoration: BoxDecoration(
                             color: Colors.grey[500],
                             borderRadius: BorderRadius.circular(22)),
-                        height: MediaQuery.of(context).size.width/20,
+                        height: 40,
                         width: MediaQuery.of(context).size.width/2,
                         child: Row(
                           children: <Widget>[
@@ -125,7 +126,7 @@ class ProfileView extends StateMVC<ProfileScreen> {
                         decoration: BoxDecoration(
                             color: Colors.grey[500],
                             borderRadius: BorderRadius.circular(22)),
-                        height: MediaQuery.of(context).size.width/20,
+                        height: 40,
                         width: MediaQuery.of(context).size.width/2,
                         child: Row(
                           children: <Widget>[
@@ -257,36 +258,35 @@ class ProfileView extends StateMVC<ProfileScreen> {
     return Stack(
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(left: 0),
           child: CircleAvatar(
-            backgroundColor: Color(0xffBF1162),
-            radius: MediaQuery.of(context).size.width/15,
-            child: _userController.imageProfile == null
-                ? CircleAvatar(
-                    backgroundImage:
-                        AssetImage("assets/imgs/person_avatar.jpg"),
-                    radius: MediaQuery.of(context).size.width/15,
-                  )
-                : _userController.imageProfile != null
-                    ? CircleAvatar(
+            //backgroundColor: Color(0xffBF1162),
+            radius: 50.0,
+            child: _userController.imageProfile == null ? CircleAvatar(
+                    backgroundImage: AssetImage("assets/imgs/person_avatar.jpg"),
+                    radius: MediaQuery.of(context).size.width,
+                  ) : _userController.imageProfile != null ?
+            CircleAvatar(
                         backgroundImage:
                             FileImage(_userController.imageProfile),
                         radius: 50,
-                      )
-                    : Card(
+                      ) : Card(
                         shape: CircleBorder(),
                         child: ClipRRect(
                             borderRadius: BorderRadius.all(
                               Radius.circular(50),
                             ),
-                            child: Image.asset(
+                            child:
+
+                            Image.asset(
                               'assets/imgs/ic_upload_avatar.png',
                               height: 300,
-                            ))),
+                            )
+                        )),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 80.0),
+          padding: const EdgeInsets.only(top: 80.0,left: 5),
           child: RaisedButton(
             shape: CircleBorder(),
             child: Icon(Icons.add_a_photo),

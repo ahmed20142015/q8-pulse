@@ -62,18 +62,62 @@ height: MediaQuery.of(context).size.height/0.7,
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: <Widget>[
                                 CircleAvatar(
-                                    radius:
-                                        MediaQuery.of(context).size.width / 10,
-                                    backgroundImage: userId != 015
-                                        ? NetworkImage(userId != null
-                                            ? "${ConstantVarable.apiImg}$userImage"
-                                            : "${googleInfo[1]}")
-                                        : AssetImage(
-                                            "assets/imgs/person_avatar.jpg")),
+                                  
+                                  
+//                                    radius:
+//                                        MediaQuery.of(context).size.width / 10,
+//                                    backgroundImage: userId != 015
+//                                        ? NetworkImage(userId != null
+//                                            ? "${ConstantVarable.apiImg}$userImage"
+//                                            : "${googleInfo[1]}")
+//                                        : AssetImage(
+//                                            "assets/imgs/person_avatar.jpg")),
+
+
+
+                                          radius: MediaQuery.of(context).size.width / 10,
+                                        backgroundImage: AssetImage("assets/imgs/person_avatar.jpg"),
+                                                             ),
+             
+             
+                                             ///before checking over userid also check that the link is valid
+                                                 ///user image is null so api call is wrong
+                                             ///for now its static, until you modify it
+             
+             //                                CircleAvatar(
+             //                                    radius:
+             //                                        MediaQuery.of(context).size.width / 10,
+             //
+             //                                    backgroundImage:
+             //
+             //                                    userId != 015 ? NetworkImage(userId != null
+             //                                            ? "${ConstantVarable.apiImg}$userImage"
+             //                                            : "${googleInfo[1]}")
+             //                                        :
+             //
+             //                                    //Image.asset('assets/images/icon.png')
+             //                            Image.asset(
+             //                            "assets/imgs/empty.png",
+             //                            width: 40,
+             //                            height: 40,
+            //                          )
+            //
+            //                                   // AssetImage("assets/imgs/mic.png")
+            //
+            //
+            //                                ),
+                                
+                                
+                                
+                                
+                                
+                                
                                 Text(
-                                  userId != null
-                                      ? "$firstName $lastName"
-                                      : "${googleInfo[0].toString()}",
+//                                  userId != null
+//                                      ? "$firstName $lastName"
+//                                      : "${googleInfo[0].toString()}",
+                                  firstName != null ? "$firstName $lastName" : " " ,
+
                                   style: TextStyle(
                                       fontSize:
                                           MediaQuery.of(context).size.width /

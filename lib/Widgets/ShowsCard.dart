@@ -43,12 +43,12 @@ class _ShowsCardState extends State<ShowsCard> {
               width: MediaQuery.of(context).size.width/25,
               height: MediaQuery.of(context).size.height/25,
               decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(
+                image: DecorationImage(
+                    image: AssetImage(
                         widget.notifyOrNo!=false?
-                      "assets/imgs/bellActive.png":
+                        "assets/imgs/bellActive.png":
                         "assets/imgs/bell.png"
-                      )),),
+                    )),),
             ),
             Container(
               width: 4,
@@ -59,7 +59,7 @@ class _ShowsCardState extends State<ShowsCard> {
                 DemoLocalizations.of(context).title['_notfy_Me'],
                 style: TextStyle(fontSize: MediaQuery.of(context).size.width/20, color:widget.notifyOrNo!=false?
                 Color(0xffFFE33F):
-                    Colors.grey[500]
+                Colors.grey[500]
                 ),
               ),
             ),
@@ -67,36 +67,36 @@ class _ShowsCardState extends State<ShowsCard> {
         ),
       ),
       onTap: () {
-if(widget.notifyOrNo==false){
-  cancelNotification(widget.data["id"]);
-  setState(() {
-    widget.notifyOrNo = true ;
-  });
+        if(widget.notifyOrNo==false){
+          cancelNotification(widget.data["id"]);
+          setState(() {
+            widget.notifyOrNo = true ;
+          });
 
-}else{
-  ShowsController()
-      .getAirTimes2(widget.data["id"].toString())
-      .then((daysList) {
+        }else{
+          ShowsController()
+              .getAirTimes2(widget.data["id"].toString())
+              .then((daysList) {
 
-    setState(() {
-      widget.notifyOrNo = false ;
-    });
+            setState(() {
+              widget.notifyOrNo = false ;
+            });
 
-    ShowsController()
-        .getAirTimes(widget.data["id"].toString())
-        .then((listTimes) {
-      for (int index = 0; index < listTimes.length; index++) {
-        showWeeklyAtDayAndTime(
-          widget.data["id"],
-          widget.data["title_en"],
-          widget.data["description2_en"],
-          daysList[index],
-          listTimes[index],
-        );
-      }
-    });
-  });
-}
+            ShowsController()
+                .getAirTimes(widget.data["id"].toString())
+                .then((listTimes) {
+              for (int index = 0; index < listTimes.length; index++) {
+                showWeeklyAtDayAndTime(
+                  widget.data["id"],
+                  widget.data["title_en"],
+                  widget.data["description2_en"],
+                  daysList[index],
+                  listTimes[index],
+                );
+              }
+            });
+          });
+        }
 
       },
     );
@@ -116,7 +116,7 @@ if(widget.notifyOrNo==false){
                   image: DecorationImage(
                       image: AssetImage(
                           widget.notifyOrNo!=false?
-                      "assets/imgs/bell.png":
+                          "assets/imgs/bell.png":
                           "assets/imgs/bellActive.png"
 
                       ))),
@@ -191,15 +191,15 @@ if(widget.notifyOrNo==false){
 //});
 
 
-      for(int x = 0 ; x < widget.listNotificationsId.length ; x++){
-        print("==== ${widget.listNotificationsId.length}");
-        print("==== ${widget.listNotificationsId.toList()}");
-        if (widget.listNotificationsId[x]!=widget.data['id']) {
-          return activeNotifications(widget.listNotificationsId[x]);
-        } else{
-          return disActiveNotifications(widget.listNotificationsId[x]);
-        }
+    for(int x = 0 ; x < widget.listNotificationsId.length ; x++){
+      //print("==== ${widget.listNotificationsId.length}");
+      print("==== ${widget.listNotificationsId.toList()}");
+      if (widget.listNotificationsId[x]!=widget.data['id']) {
+        return activeNotifications(widget.listNotificationsId[x]);
+      } else{
+        return disActiveNotifications(widget.listNotificationsId[x]);
       }
+    }
 
 //      int i = 0 ;
 //
@@ -217,6 +217,7 @@ if(widget.notifyOrNo==false){
 
   @override
   Widget build(BuildContext context) {
+    print("karim ${widget.data.toString()}");
     return ScopedModelDescendant<AppModel>(
       builder: (context, child, model) {
         String text = model.appLocale == Locale('en')
@@ -244,65 +245,74 @@ if(widget.notifyOrNo==false){
                               topRight: Radius.circular(12)),
                           image: new DecorationImage(
                               image: NetworkImage(ConstantVarable.apiImg +
-                                          widget.data["image"] ==
-                                      null
+                                  widget.data["image"] ==
+                                  null
                                   ? "assets/imgs/broadcaster1.png"
                                   : ConstantVarable.apiImg +
-                                      widget.data["image"]),
+                                  widget.data["image"]),
                               fit: BoxFit.cover)),
                       child: Stack(
                         children: <Widget>[
                           Align(
                             alignment: Alignment.bottomLeft,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "9:30 am",
-                                style: TextStyle(fontSize: 12),
-                              ),
+                            child: Container(),
+                          )
+                        ],
+                      )
+
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(12),
+                            bottomRight: Radius.circular(12)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black,
+                            blurRadius:
+                            20.0, // has the effect of softening the shadow
+                            spreadRadius:
+                            5.0, // has the effect of extending the shadow
+                            offset: Offset(
+                              0.0, // horizontal, move right 10
+                              -5.0,
+
+                              // vertical, move down 10
                             ),
                           )
                         ],
-                      )),
-                  Container(
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(12),
-                              bottomRight: Radius.circular(12)),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black,
-                              blurRadius:
-                                  20.0, // has the effect of softening the shadow
-                              spreadRadius:
-                                  5.0, // has the effect of extending the shadow
-                              offset: Offset(
-                                0.0, // horizontal, move right 10
-                                -5.0,
+                        color: Colors.black),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(text==null?"":
+                          text.length >= 20
+                              ? text.substring(0, 12) + "..."
+                              : text,
+                            style: TextStyle(
+                                fontSize: MediaQuery.of(context).size.width/25, color: Colors.grey[500]),
+                          ),
 
-                                // vertical, move down 10
-                              ),
-                            )
-                          ],
-                          color: Colors.black),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(text==null?"":
-                              text.length >= 20
-                                  ? text.substring(0, 12) + "..."
-                                  : text,
-                              style: TextStyle(
-                                  fontSize: MediaQuery.of(context).size.width/25, color: Colors.grey[500]),
+
+                          Padding(
+                            padding: const EdgeInsets.all(0.0),
+                            child: Text(
+                              widget.data["from_time"] != null ? widget.data["from_time"]:" ",
+                              style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: Colors.white),
                             ),
-                            notificationWidget(),
-                          ],
-                        ),
+                          ),
+
+
+
+
+                          notificationWidget(),
+                        ],
                       ),
                     ),
+                  ),
 
                 ],
               ),
@@ -314,11 +324,11 @@ if(widget.notifyOrNo==false){
                   context,
                   MaterialPageRoute(
                       builder: (context) => SingleShowScreen(
-                            data: widget.data,
-                            valueMode: widget.valueMode,
-                            phone: user.phone,
-                        guestId:widget.guestId
-                          )));
+                          data: widget.data,
+                          valueMode: widget.valueMode,
+                          phone: user.phone,
+                          guestId:widget.guestId
+                      )));
             });
           },
         );
